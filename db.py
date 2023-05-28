@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-import datetime
+import datetime, os
 
 clients = [
     {
@@ -98,7 +98,7 @@ clients = [
     
 class MongoAPI:
     def __init__(self):
-        self.mongo_client = MongoClient("mongodb://localhost:27017/")  
+        self.mongo_client = MongoClient("mongodb://" + os.environ.get('MONGO_DB_HOST')+ ":27017/")  
 
         dbnames = self.mongo_client.list_database_names()
         if 'bhub' not in dbnames:

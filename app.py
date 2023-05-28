@@ -116,4 +116,4 @@ def delete(client_id):
     return make_response("", 204)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')

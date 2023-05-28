@@ -72,7 +72,7 @@ python3 -m venv venv
 ```
 Then, create a MongoDB using Docker to accomodate the database:
 ```
-docker create --name BHubMongoDB -p 27017:27017 mongo
+docker create --name mongodb -p 27017:27017 mongo
 ```
 
 ### Running
@@ -87,32 +87,25 @@ pip3 install -r requirements.txt
 ```
 The MongoDB database can be started with the command:
 ```
-docker start BHubMongoDB
+docker start mongodb
 ```
 Finally, the API can be runned with the command:
 ```
 flask run
 ```
 
-### Additional Commands
-
-To connect mongo with the BHubMongoDB instance and visualize the data:
-```
-mongo
-> use bhub
-> db.clients.find()
-```
-
-To delete the BHubMongoDB container:
-```
-docker rm -f BHubMongoDB
-```
-
 ## Test
 
-Unit tests (for client validation) and functional tests (for routes) are implemented using PyTest. To run the tests, execute the command below in the ./ or ./tests folder:
+Unit tests (for client validation) and e2e tests (for routes) are implemented using PyTest. To run the tests, execute the command:
 ```
 python3 -m pytest
+```
+
+## Deployment on Docker
+
+The application can be run directly with Docker, that it will be responsible for both running Python Flask and MongoDB:
+```
+docker-compose up
 ```
 
 ## References
