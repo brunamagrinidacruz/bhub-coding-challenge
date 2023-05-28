@@ -99,11 +99,16 @@ clients = [
 class MongoAPI:
     def __init__(self):
         self.mongo_client = MongoClient("mongodb://localhost:27017/")  
-        cursor = self.mongo_client['bhub']
-        self.collection = cursor['clients']
 
-        for client in clients:
-            self.write(client)
+        dbnames = self.mongo_client.list_database_names()
+        if 'bhub' not in dbnames:
+            cursor = self.mongo_client['bhub']
+            self.collection = cursor['clients']
+            for client in clients:
+                self.write(client)
+        else:
+           cursor = self.mongo_client['bhub']
+           self.collection = cursor['clients'] 
 
     def read(self):
         documents = self.collection.find()
