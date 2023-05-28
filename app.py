@@ -33,22 +33,22 @@ def is_client_complete(client):
     
 def is_client_valid(client):
     if 'telephone' in client:
-        telephone_regex = re.compile('^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$')
-        if not (re.match(telephone_regex, client['telephone'])):
+        telephone_regex = re.compile(r'^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$')
+        if not (re.fullmatch(telephone_regex, client['telephone'])):
             return (False, "telephone not well formated")
     if 'declared_billing' in client:
         if not isinstance(client['declared_billing'], (int, float)):
             return (False, "declared_billing wrong type")
     if 'bank_accounts' in client:
         for bank_account in client['bank_accounts']:
-            bank_regex = re.compile('^[0-9]{3}')
-            if not (re.match(bank_regex, bank_account['bank'])):
+            bank_regex = re.compile(r'^[0-9]{3,3}')
+            if not (re.fullmatch(bank_regex, bank_account['bank'])):
                 return (False, "bank not well formated")
-            agency_regex = re.compile('^[0-9]{3,5}')
-            if not (re.match(agency_regex, bank_account['agency'])):
+            agency_regex = re.compile(r'^[0-9]{3,5}')
+            if not (re.fullmatch(agency_regex, bank_account['agency'])):
                 return (False, "agency not well formated")
-            account_number_regex = re.compile('^[0-9]{1,20}\-[0-9|a-z|A-Z]')
-            if not (re.match(account_number_regex, bank_account['account_number'])):
+            account_number_regex = re.compile(r'^[0-9]{1,20}\-[0-9|a-z|A-Z]')
+            if not (re.fullmatch(account_number_regex, bank_account['account_number'])):
                 return (False, "account_number not well formated")
     return (True, None)
 

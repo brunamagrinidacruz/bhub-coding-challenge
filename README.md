@@ -108,6 +108,13 @@ To delete the BHubMongoDB container:
 docker rm -f BHubMongoDB
 ```
 
+## Test
+
+Unit tests (for client validation) and functional tests (for routes) are implemented using PyTest. To run the tests (client validation and routes), execute the command below in the ./ or ./tests folder:
+```
+python3 -m pytest
+```
+
 ## References
 
 [Best Practices for Designing a Pragmatic RESTful API](https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#useful-post-responses)
