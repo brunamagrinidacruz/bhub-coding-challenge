@@ -26,7 +26,7 @@ Each client is represented with the following informations:
 | Update     | /clients/<client_id> |   PUT   | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 + Body | 
 | Delete     | /clients/<client_id> |  DELETE | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 | 
 
-- Create Body:
+- Example of create body:
 
 ```
 {
@@ -43,7 +43,7 @@ Each client is represented with the following informations:
     ]
 }
 ```
-- Update Body:
+- Example of update body:
 ```
 {
     "company_name": "BHub",
@@ -110,7 +110,7 @@ docker rm -f BHubMongoDB
 
 ## Test
 
-Unit tests (for client validation) and functional tests (for routes) are implemented using PyTest. To run the tests (client validation and routes), execute the command below in the ./ or ./tests folder:
+Unit tests (for client validation) and functional tests (for routes) are implemented using PyTest. To run the tests, execute the command below in the ./ or ./tests folder:
 ```
 python3 -m pytest
 ```
