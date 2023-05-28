@@ -18,13 +18,13 @@ Each client is represented with the following informations:
 
 ## Endpoints
 
-| Operation with Clients |   Link   |  Method | Request | Response |
-|------------|----------------------|---------|---------|--------------|
-| Create     | /clients             |   POST  | http://127.0.0.1:5000/clients + Body | - 201 + Client Created  |
-| Read All   | /clients             |   GET   | http://127.0.0.1:5000/clients | - 200 + List of Clients |
-| Read One   | /clients/<client_id> |   GET   | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3  | - 404 If Client Not Found <br> - 200 + Client Read | |
-| Update     | /clients/<client_id> |   PUT   | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 + Body | - 404 If Client Not Found <br> - 200 Client Updated |
-| Delete     | /clients/<client_id> |  DELETE | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 | - 404 If Client Not Found <br> - 201 |
+| Operation with Clients |   Link   |  Method | Request | 
+|------------|----------------------|---------|---------|
+| Create     | /clients             |   POST  | http://127.0.0.1:5000/clients + Body |
+| Read All   | /clients             |   GET   | http://127.0.0.1:5000/clients |
+| Read One   | /clients/<client_id> |   GET   | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3  | 
+| Update     | /clients/<client_id> |   PUT   | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 + Body | 
+| Delete     | /clients/<client_id> |  DELETE | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 | 
 
 - Create Body:
 
