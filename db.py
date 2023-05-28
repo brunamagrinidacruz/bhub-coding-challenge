@@ -122,15 +122,22 @@ class MongoAPI:
                 else:
                     client['_id'] = str(document['_id'])
             clients.append(client)
-                    
-
-        output = [{item: data[item] for item in data if item != '_id'} for data in documents]
+                
         return clients
 
     def create(self, client):
         client['registration_date'] = datetime.datetime.now()
         response = self.collection.insert_one(client)
         return self.collection.find_one({"_id": response.inserted_id})
+    
+    def update(self, filter, client):
+        updated_data = {"$set": client}
+        response = self.collection.update_one(filter, updated_data)
+
+        if response.modified_count > 0:
+            print(response)
+            return (True, self.collection.find_one(filter))
+        return (False, None)
     
     def delete(self, filter):
         response = self.collection.delete_one(filter)

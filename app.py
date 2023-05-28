@@ -19,6 +19,16 @@ def create():
     client['_id'] = str(client['_id'])
     return make_response(jsonify(client), 201)
 
+@app.route('/clients/<client_id>', methods=['PUT'])
+def update(client_id):
+        modified, client = mongo.update({ '_id': ObjectId(client_id)}, request.json) 
+        
+        if (not modified):
+            abort(404)
+        
+        client['_id'] = str(client['_id'])
+        return make_response(jsonify(client), 200) 
+
 @app.route('/clients/<client_id>', methods=['DELETE'])
 def delete(client_id):
     deleted = mongo.delete({ '_id': ObjectId(client_id)}) 

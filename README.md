@@ -18,15 +18,15 @@ Each client is represented with the following informations:
 
 ## Endpoints
 
-| Operation with Clients |   Link   |  Method | URL |
-|------------|----------------------|---------|---------|
-| Create     | /clients             |   POST  | http://127.0.0.1:5000/clients |
-| Read All   | /clients             |   GET   | http://127.0.0.1:5000/clients |
-| Read One   |                      |         |         |
-| Update     |                      |         |         |
-| Delete     | /clients/<client_id> |  DELETE | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 |
+| Operation with Clients |   Link   |  Method | Request | Response |
+|------------|----------------------|---------|---------|--------------|
+| Create     | /clients             |   POST  | http://127.0.0.1:5000/clients + Body | 201 + Client Created  |
+| Read All   | /clients             |   GET   | http://127.0.0.1:5000/clients | 200 + List of Clients |
+| Read One   |                      |         |         | |
+| Update     | /clients/<client_id> |   PUT   | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 + Body | 404 If Client Not Found or 200 + Client Updated |
+| Delete     | /clients/<client_id> |  DELETE | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 | 404 If Client Not Found or 201 |
 
-### Create
+- Create Body:
 
 ```
 {
@@ -39,6 +39,22 @@ Each client is represented with the following informations:
             "bank": "290",
             "agency": "0251",
             "account_number": "54035-7"
+        }
+    ]
+}
+```
+- Update Body:
+```
+{
+    "company_name": "BHub",
+    "telephone": "(11) 3888-2187",
+    "address": "Rua Brigadeiro Faria Lima, 500 - Itaim Bibi, São Paulo - SP, 09720-010",
+    "declared_billing": 1000000000,
+    "bank_accounts": [
+        {
+            "bank": "001",
+            "agency": "6484",
+            "account_number": "98236-X"
         }
     ]
 }
@@ -91,3 +107,11 @@ To delete the BHubMongoDB container:
 ```
 docker rm -f BHubMongoDB
 ```
+
+## References
+
+[Best Practices for Designing a Pragmatic RESTful API](https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#useful-post-responses)
+
+[Handling Application Errors](https://flask.palletsprojects.com/en/2.3.x/errorhandling/)
+
+[How to create Restful CRUD API with Python Flask, MongoDB, and Docker](https://ishmeet1995.medium.com/how-to-create-restful-crud-api-with-python-flask-mongodb-and-docker-8f6ccb73c5bc)
