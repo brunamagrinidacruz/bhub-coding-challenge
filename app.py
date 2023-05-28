@@ -13,6 +13,16 @@ def index():
 def read():
     return make_response(mongo.read(), 200)
 
+@app.route('/clients/<client_id>', methods=['GET'])
+def readOne(client_id):
+    client = mongo.readOne({ '_id': ObjectId(client_id)})
+                  
+    if client is None:
+        abort(404)
+
+    client['_id'] = str(client['_id'])
+    return (make_response(jsonify(client)), 200)
+
 @app.route('/clients', methods=['POST'])
 def create():
     client = mongo.create(request.json)
@@ -32,6 +42,7 @@ def update(client_id):
 @app.route('/clients/<client_id>', methods=['DELETE'])
 def delete(client_id):
     deleted = mongo.delete({ '_id': ObjectId(client_id)}) 
+    
     if (not deleted):
         abort(404)
 

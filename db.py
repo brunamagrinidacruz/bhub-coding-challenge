@@ -124,6 +124,9 @@ class MongoAPI:
             clients.append(client)
                 
         return clients
+    
+    def readOne(self, filter):
+        return self.collection.find_one(filter)
 
     def create(self, client):
         client['registration_date'] = datetime.datetime.now()
