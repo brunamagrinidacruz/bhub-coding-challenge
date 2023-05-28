@@ -105,18 +105,33 @@ class MongoAPI:
             cursor = self.mongo_client['bhub']
             self.collection = cursor['clients']
             for client in clients:
-                self.write(client)
+                self.create(client)
         else:
            cursor = self.mongo_client['bhub']
            self.collection = cursor['clients'] 
 
     def read(self):
         documents = self.collection.find()
-        output = [{item: data[item] for item in data if item != '_id'} for data in documents]
-        return output
 
-    def write(self, client):
+        clients = []
+        for document in documents:
+            client = {}
+            for item in document:
+                if item != '_id':
+                    client[item] = document[item]
+                else:
+                    client['_id'] = str(document['_id'])
+            clients.append(client)
+                    
+
+        output = [{item: data[item] for item in data if item != '_id'} for data in documents]
+        return clients
+
+    def create(self, client):
         client['registration_date'] = datetime.datetime.now()
         response = self.collection.insert_one(client)
         return self.collection.find_one({"_id": response.inserted_id})
     
+    def delete(self, filter):
+        response = self.collection.delete_one(filter)
+        return response.deleted_count > 0

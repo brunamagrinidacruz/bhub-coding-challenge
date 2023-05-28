@@ -18,13 +18,13 @@ Each client is represented with the following informations:
 
 ## Endpoints
 
-| Operation with Clients | Link | Method |
-|------------|------|---------|
-| Create     | /clients | POST    |
-| Read All   | /clients | GET |
-| Read One   |      |         |
-| Update     |      |         |
-| Delete     |      |         |
+| Operation with Clients |   Link   |  Method | URL |
+|------------|----------------------|---------|---------|
+| Create     | /clients             |   POST  | http://127.0.0.1:5000/clients |
+| Read All   | /clients             |   GET   | http://127.0.0.1:5000/clients |
+| Read One   |                      |         |         |
+| Update     |                      |         |         |
+| Delete     | /clients/<client_id> |  DELETE | http://127.0.0.1:5000/clients/647352c00a8355f49c039cb3 |
 
 ### Create
 
@@ -85,4 +85,9 @@ To connect mongo with the BHubMongoDB instance and visualize the data:
 mongo
 > use bhub
 > db.clients.find()
+```
+
+To delete the BHubMongoDB container:
+```
+docker rm -f BHubMongoDB
 ```
