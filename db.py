@@ -116,5 +116,7 @@ class MongoAPI:
         return output
 
     def write(self, client):
+        client['registration_date'] = datetime.datetime.now()
         response = self.collection.insert_one(client)
-        return response.inserted_id
+        return self.collection.find_one({"_id": response.inserted_id})
+    

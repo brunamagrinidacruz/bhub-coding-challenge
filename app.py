@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from db import MongoAPI
 
 mongo = MongoAPI()
@@ -10,10 +10,13 @@ def index():
 
 @app.route('/clients', methods=['GET'])
 def read():
-    return jsonify({
-                'response': mongo.read(),
-                'status': '200',
-            })
+    return (mongo.read(), 200)
+
+@app.route('/clients', methods=['POST'])
+def write():
+    client = mongo.write(request.json)
+    client['_id'] = str(client['_id'])
+    return (jsonify(client), 201)
 
 if __name__ == '__main__':
     app.run()

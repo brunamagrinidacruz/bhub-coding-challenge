@@ -16,6 +16,34 @@ Each client is represented with the following informations:
 - Registration date;
 - Bank account (one or more): bank, agency and account number.
 
+## Endpoints
+
+| Operation with Clients | Link | Method |
+|------------|------|---------|
+| Create     | /clients | POST    |
+| Read All   | /clients | GET |
+| Read One   |      |         |
+| Update     |      |         |
+| Delete     |      |         |
+
+### Create
+
+```
+{
+    "company_name": "BHub",
+    "telephone": "(11) 98876-7612",
+    "address": "Rua Cardeal Arcoverde, 2365 - Andares 2 e 3 - Pinheiros, São Paulo - SP, 05407-003",
+    "declared_billing": 180000000,
+    "bank_accounts": [
+        {
+            "bank": "290",
+            "agency": "0251",
+            "account_number": "54035-7"
+        }
+    ]
+}
+```
+
 ## Development
 
 ### Configuration
@@ -50,7 +78,6 @@ Finally, the API can be runned with the command:
 flask run
 ```
 
-
 ### Additional Commands
 
 To connect mongo with the BHubMongoDB instance and visualize the data:
@@ -59,15 +86,3 @@ mongo
 > use bhub
 > db.clients.find()
 ```
-
-## Endpoints
-
-| Operation  | Link | Example |
-|------------|------|---------|
-| Create     |      |         |
-| Read All   | /clients | http://127.0.0.1:5000/clients |
-| Read One   |      |         |
-| Update     |      |         |
-| Delete One |      |         |
-| Delete All |      |         |
-
