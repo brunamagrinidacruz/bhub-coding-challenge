@@ -122,3 +122,5 @@ python3 -m pytest
 [Handling Application Errors](https://flask.palletsprojects.com/en/2.3.x/errorhandling/)
 
 [How to create Restful CRUD API with Python Flask, MongoDB, and Docker](https://ishmeet1995.medium.com/how-to-create-restful-crud-api-with-python-flask-mongodb-and-docker-8f6ccb73c5bc)
+
+[Testing Flask Applications with Pytest](https://testdriven.io/blog/flask-pytest/)
