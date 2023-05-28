@@ -65,7 +65,7 @@ mongo
 | Operation  | Link | Example |
 |------------|------|---------|
 | Create     |      |         |
-| Read All   | /v1/clients | http://127.0.0.1:5000/v1/clients |
+| Read All   | /clients | http://127.0.0.1:5000/clients |
 | Read One   |      |         |
 | Update     |      |         |
 | Delete One |      |         |
