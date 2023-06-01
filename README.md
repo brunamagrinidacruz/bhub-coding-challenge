@@ -6,7 +6,7 @@ This project consists in an API with CRUD operations for managing BHub clients.
 
 It was implemented using Python Flask as the back-end framework and MongoDB as the database.
 
-The application is temporarily available in 64.226.120.77:5000, hosted in DigitalOcean platform.
+The application was available in 64.226.120.77:5000, hosted in DigitalOcean platform. If required, it can be deployed again. 
 
 ### Specifications
 
